@@ -20,7 +20,18 @@ TBA
 
 ## The games I played
 
-Lorem ipsum
+| Game | Console | Score |
+|---|---|---:|
+| The Legend of Zelda: Breath of the Wild | Nintendo Switch | 9.5 |
+| Hollow Knight | Nintendo Switch | 9.0 |
+| God of War Ragnarök | PlayStation 5 | 9.0 |
+| Celeste | Nintendo Switch | 8.5 |
+| Mario Kart 8 Deluxe | Nintendo Switch | 8.0 |
+| Red Dead Redemption 2 | PlayStation 4 | 9.5 |
+| Persona 5 Royal | PlayStation 5 | 9.0 |
+| Halo: Reach | Xbox 360 | 8.0 |
+| Metroid Dread | Nintendo Switch | 8.5 |
+| Dead Cells | PC | 8.0 |
 
 ## The books I read
 
