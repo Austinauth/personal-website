@@ -257,6 +257,24 @@ function formatDate(date: Date) {
     opacity: 0.9;
   }
 
+  .post-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0 24px;
+    font-size: 14px;
+  }
+
+  .post-content :global(th),
+  .post-content :global(td) {
+    border: 1px solid #d0cdc8;
+    padding: 6px 10px;
+    text-align: left;
+  }
+
+  .post-content :global(th) {
+    background: #e8e6e2;
+  }
+
   .post-nav {
     display: flex;
     justify-content: space-between;
