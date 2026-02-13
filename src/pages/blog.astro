@@ -1,0 +1,102 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+
+// Filter to blog posts only, sort by date descending
+const blogPosts = posts
+  .filter((post) => post.data.type === 'Blog')
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// Group by year
+const postsByYear = blogPosts.reduce((acc, post) => {
+  const year = post.data.date.getFullYear();
+  if (!acc[year]) acc[year] = [];
+  acc[year].push(post);
+  return acc;
+}, {} as Record<number, typeof blogPosts>);
+
+const years = Object.keys(postsByYear).map(Number).sort((a, b) => b - a);
+
+function formatDate(date: Date) {
+  const day = date.getDate();
+  const suffix = day === 1 || day === 21 || day === 31 ? 'st' 
+    : day === 2 || day === 22 ? 'nd' 
+    : day === 3 || day === 23 ? 'rd' 
+    : 'th';
+  const month = date.toLocaleDateString('en-US', { month: 'short' });
+  return `${month} ${day}${suffix}`;
+}
+---
+
+<Layout title="Blog - Austin Auth">
+  <h1>Blog</h1>
+
+  {years.map((year) => (
+    <section class="year-section">
+      <h2>{year}</h2>
+      <ul class="posts-list">
+        {postsByYear[year].map((post) => (
+          <li class="post-item">
+            <a href={`/posts/${post.id}`} class="post-title">{post.data.title}</a>
+            <span class="post-date">{formatDate(post.data.date)}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</Layout>
+
+<style>
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 40px;
+  }
+
+  .year-section {
+    margin-bottom: 48px;
+  }
+
+  h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .posts-list {
+    list-style: none;
+  }
+
+  .post-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    padding: 10px 0;
+  }
+
+  .post-item::after {
+    content: '';
+    flex: 1;
+    border-bottom: 2px dotted #ccc;
+    margin: 0 8px;
+    position: relative;
+    top: -1px;
+  }
+
+  .post-date {
+    font-size: 14px;
+    color: #888;
+    order: 1;
+  }
+
+  .post-title {
+    font-size: 16px;
+    transition: color 0.2s;
+  }
+
+  .post-title:hover {
+    color: #c97070;
+  }
+</style>

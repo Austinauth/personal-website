@@ -1,0 +1,232 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About - Austin Auth">
+  <section class="about">
+    <h1>About</h1>
+    <div class="content">
+      <img src="/images/me-2.jpg" alt="Austin Auth" class="about-photo" />
+      <p>
+        Hey, thanks for taking a moment to stop by. If you’re reading this, there is a good chance you already know I’m a Senior Product Designer at Microsoft within the CoreAI division. And if you didn’t, well, now you do.
+      </p>
+      <p>
+        Over the last 12ish years I have focused on building products for developers, specifically within the cloud and AI space. If you are a dev, you might be familiar with some of the tools I’ve helped design at places like IBM, Microsoft, and Pluralsight. This includes work on Azure CLI tools, VS Code extensions, GitHub Copilot, and IBM Cloud's billing and invoicing experience.
+      </p>
+      <p>
+        On a personal level, my interests are constantly changing. Collecting is probably my biggest passion. Currently, I am hunting for retro video games, Pokémon cards, Sofubi, and vintage horror paperbacks. I don't watch a ton of TV or movies, but when I do, it is usually something scary. I also love Japanese pro-wrestling and have recently gotten into watching Grand Sumo in a big way.
+    </div>
+
+    <section class="contact-section">
+      <h2>Contact info</h2>
+      <p class="contact-text">If you'd like to get in touch, please feel free to reach out via email (best) or find me on my socials.</p>
+      <div class="contact-links">
+        <a href="mailto:hello@austinauth.com">email</a>
+        <span class="contact-sep">/</span>
+        <a href="https://github.com/austinauth" target="_blank" rel="noopener">GitHub</a>
+        <span class="contact-sep">/</span>
+        <a href="https://dribbble.com/austinauth" target="_blank" rel="noopener">Dribbble</a>
+        <span class="contact-sep">/</span>
+        <a href="https://linkedin.com/in/austinauth" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </section>
+
+    <hr class="divider" />
+
+    <div class="resume-section">
+      <h2>Experience</h2>
+      
+      <div class="item">
+        <div class="item-header">
+          <h3>Senior Product Designer</h3>
+          <span class="date">May 2022 - Present</span>
+        </div>
+        <p class="company">Microsoft</p>
+        <p class="description">
+          Leading design for enterprise cloud products. Responsible for design systems, 
+          user research, and cross-functional collaboration with engineering teams.
+        </p>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <h3>Senior Product Designer</h3>
+          <span class="date">May 2021 - May 2022</span>
+        </div>
+        <p class="company">Pluralsight</p>
+        <p class="description">
+          Led UX design for B2B product-led growth and content discovery initiatives, optimizing onboarding and personalized search to drive conversion and engagement. I prioritized data-driven insights and cross-platform integrations to streamline the user journey from initial trial to premium feature adoption.
+        </p>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <h3>Design Lead</h3>
+          <span class="date">Jan 2019 - May 2021</span>
+        </div>
+        <p class="company">IBM</p>
+        <p class="description">
+          Led UX design for 10+ IBM Cloud billing and cost management initiatives, driving the end-to-end delivery of high-fidelity invoicing, usage monitoring, and enterprise experiences. I headed a cross-functional design team and synthesized insights from over 200 user interviews into actionable roadmaps that streamlined implementation and optimized the billing journey.
+        </p>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <h3>User Experience Designer</h3>
+          <span class="date">Jul 2017 - Jan 2019</span>
+        </div>
+        <p class="company">ActiveProspect</p>
+        <p class="description">
+          Designed and delivered user-centered experiences for lead acquisition and consent management products. Collaborated closely with product and engineering to improve usability across the platform.
+        </p>
+      </div>
+
+      <div class="item">
+        <div class="item-header">
+          <h3>User Experience Designer</h3>
+          <span class="date">Jan 2014 - Jun 2017</span>
+        </div>
+        <p class="company">IBM</p>
+        <p class="description">
+          Designed end-to-end experiences for IBM Bluemix (now IBM Cloud), including service navigation, user journey mapping, and platform onboarding. Contributed to design thinking workshops and internal tooling for design teams.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .about {
+    max-width: 100%;
+  }
+
+
+
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .content {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .about-photo {
+    width: 100%;
+    max-height: 360px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 24px;
+  }
+
+  .content p {
+    margin-bottom: 16px;
+  }
+
+  .content h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 32px 0 12px;
+  }
+
+  .resume-section {
+    margin-top: 48px;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #e0ddd8;
+    margin: 40px 0;
+  }
+
+  .resume-section h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 32px 0 20px;
+  }
+
+  .resume-section h2:first-child {
+    margin-top: 0;
+  }
+
+  .item {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e0ddd8;
+  }
+
+  .item:last-of-type {
+    border-bottom: none;
+  }
+
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .date {
+    font-size: 14px;
+    color: #888;
+  }
+
+  .company {
+    font-size: 14px;
+    color: #c97070;
+    margin-bottom: 8px;
+  }
+
+  .description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #666;
+  }
+
+  .contact-section {
+    margin-top: 40px;
+  }
+
+  .contact-section h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .contact-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    font-size: 16px;
+  }
+
+  .contact-links a {
+    color: #c97070;
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+
+  .contact-links a:hover {
+    color: #a85858;
+  }
+
+  .contact-sep {
+    color: #ccc;
+  }
+
+
+</style>

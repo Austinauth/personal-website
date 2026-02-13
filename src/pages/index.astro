@@ -1,0 +1,218 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+const sorted = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const recentBlog = sorted.filter(p => p.data.type === 'Blog').slice(0, 4);
+const recentProjects = sorted.filter(p => p.data.type === 'Project').slice(0, 4);
+
+function formatDate(date: Date) {
+  const day = date.getDate();
+  const suffix = day === 1 || day === 21 || day === 31 ? 'st' 
+    : day === 2 || day === 22 ? 'nd' 
+    : day === 3 || day === 23 ? 'rd' 
+    : 'th';
+  const month = date.toLocaleDateString('en-US', { month: 'short' });
+  const year = date.getFullYear();
+  return `${month} ${day}${suffix}, ${year}`;
+}
+---
+
+<Layout title="Austin Auth - Product Designer">
+  <section class="hero">
+    <h1>Austin Auth</h1>
+    <p class="subtitle">Product designer</p>
+  </section>
+
+  <p class="intro">Hello, I'm Austin, a Senior Product Designer at <span class="accent">Microsoft</span> working within their <span class="accent">CoreAI division</span>. Before that, I spent time at IBM, Pluralsight, and ActiveProspect.</p>
+
+  <p class="intro intro-last">Lately, I've been designing AI tools for developers like the Azure SRE agent and GitHub Copilot. My previous work spans cloud compute, billing and education, VS Code extensions, and developer CLI tools. I hope you'll stick around for a bit and see what I've been building.</p>
+
+  <hr class="divider" />
+
+  <section class="feed-section">
+    <div class="feed-header">
+      <h2>Latest posts</h2>
+      <a href="/blog" class="see-all">See all posts</a>
+    </div>
+    <ul class="posts-list">
+      {recentBlog.map((post) => (
+        <li class="post-item">
+          <a href={`/posts/${post.id}`} class="post-title">{post.data.title}</a>
+          <span class="post-date">{formatDate(post.data.date)}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="feed-section">
+    <div class="feed-header">
+      <h2>Recent projects</h2>
+      <a href="/projects" class="see-all">See all projects</a>
+    </div>
+    <ul class="posts-list">
+      {recentProjects.map((post) => (
+        <li class="post-item">
+          <a href={`/posts/${post.id}`} class="post-title">{post.data.title}</a>
+          <span class="post-date">{formatDate(post.data.date)}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <hr class="divider" />
+
+  <section class="contact-section">
+    <h2>Contact info</h2>
+    <p class="contact-text">If you'd like to get in touch, please feel free to reach out via email (best) or find me on my socials.</p>
+    <div class="contact-links">
+      <a href="mailto:hello@austinauth.com">email</a>
+      <span class="contact-sep">/</span>
+      <a href="https://github.com/austinauth" target="_blank" rel="noopener">GitHub</a>
+      <span class="contact-sep">/</span>
+      <a href="https://dribbble.com/austinauth" target="_blank" rel="noopener">Dribbble</a>
+      <span class="contact-sep">/</span>
+      <a href="https://linkedin.com/in/austinauth" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    margin-bottom: 48px;
+  }
+
+  .intro {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #1a1a1a;
+    margin-bottom: 24px;
+  }
+
+  .intro-last {
+    margin-bottom: 0;
+  }
+
+  h1 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 1px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    color: #c97070;
+  }
+
+  .feed-section {
+    margin-bottom: 40px;
+  }
+
+  .feed-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .posts-list {
+    list-style: none;
+  }
+
+  .post-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    padding: 10px 0;
+  }
+
+  .post-item::after {
+    content: '';
+    flex: 1;
+    border-bottom: 2px dotted #ccc;
+    margin: 0 8px;
+    position: relative;
+    top: -1px;
+  }
+
+  .post-date {
+    font-size: 14px;
+    color: #888;
+    order: 1;
+  }
+
+  .post-title {
+    font-size: 16px;
+    transition: color 0.2s;
+  }
+
+  .post-title:hover {
+    color: #c97070;
+  }
+
+  .see-all {
+    font-size: 14px;
+    color: #888;
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+
+  .see-all:hover {
+    color: #c97070;
+  }
+
+  .contact-section {
+    margin-bottom: 48px;
+  }
+
+  .contact-section h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  .contact-text {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #1a1a1a;
+    margin-bottom: 16px;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    font-size: 16px;
+  }
+
+  .contact-links a {
+    color: #c97070;
+    text-decoration: underline;
+    transition: color 0.2s;
+  }
+
+  .contact-links a:hover {
+    color: #a85858;
+  }
+
+  .contact-sep {
+    color: #ccc;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #e0ddd8;
+    margin: 40px 0;
+  }
+
+  .accent {
+    color: #c97070;
+  }
+</style>
