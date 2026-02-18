@@ -16,6 +16,12 @@ It wasn't until last year that I decided to do something about it, to be more in
 
 ## The games I played
 
+<div style="display: flex; gap: 16px; margin: 24px 0;">
+  <img src="/images/dusk.jpg" alt="Dusk" style="display: inline-block; flex: 1; min-width: 0; max-width: none; height: auto; margin: 0; border-radius: 6px;" />
+  <img src="/images/chibi-robo.jpg" alt="Chibi-Robo: Clean Sweep" style="display: inline-block; flex: 1; min-width: 0; max-width: none; height: auto; margin: 0; border-radius: 6px;" />
+  <img src="/images/cultic.jpg" alt="Cultic" style="display: inline-block; flex: 1; min-width: 0; max-width: none; height: auto; margin: 0; border-radius: 6px;" />
+</div>
+
 One of my biggest comfort food games is **Dusk**. I try to play it once every few years. It is the game that reignited my passion for retro PC shooters and it absolutely holds up. The atmosphere is phenomenal and the soundtrack is incredible. Without hesitation it's a top 10 game for me.
 
 I have long wanted to play **Chibi-Robo: Clean Sweep** for the DS after thoroughly enjoying the GameCube entry. However, due to it being a Japanese exclusive, I was left with little option but to hope for a fan translation. Well, thankfully we got one a few years back and I finally got around to playing it. 
@@ -53,6 +59,12 @@ Beyond these two titles I had a blast with so *many* other games. **Cultic: Chap
 
 ## The books I read
 
+<div style="display: flex; gap: 16px; margin: 24px 0;">
+  <img src="/images/a-short-stay.jpg" alt="A Short Stay in Hell" style="display: inline-block; flex: 1; min-width: 0; max-width: none; height: auto; margin: 0; border-radius: 6px;" />
+  <img src="/images/battle-royale.jpg" alt="Battle Royale" style="display: inline-block; flex: 1; min-width: 0; max-width: none; height: auto; margin: 0; border-radius: 6px;" />
+  <img src="/images/20th-century.jpg" alt="20th Century Ghosts" style="display: inline-block; flex: 1; min-width: 0; max-width: none; height: auto; margin: 0; border-radius: 6px;" />
+</div>
+
 Much like with games, it was a great year for reading. I mostly stick to horror and thriller books and this year was no different. By far the piece of media that stuck with me the most was **A Short Stay in Hell** by Steven Peck. It absolutely filled me with existential dread in a way I've never felt before. The less I say about it the better. Go read it.
 
 Other standouts include **Battle Royale**, which I enjoyed much more than the film, and the short stories *Best New Horror* and *20th Century Ghost* by Joe Hill in his short story collection **20th Century Ghosts**.
@@ -81,6 +93,12 @@ Other standouts include **Battle Royale**, which I enjoyed much more than the fi
 
 ## The movies I watched
 
+<div style="display: flex; gap: 16px; margin: 24px 0;">
+  <img src="/images/shawshank.jpg" alt="The Shawshank Redemption" style="display: inline-block; flex: 1; min-width: 0; max-width: none; height: auto; margin: 0; border-radius: 6px;" />
+  <img src="/images/sinners.jpg" alt="Sinners" style="display: inline-block; flex: 1; min-width: 0; max-width: none; height: auto; margin: 0; border-radius: 6px;" />
+  <img src="/images/die-hard.jpg" alt="Die Hard" style="display: inline-block; flex: 1; min-width: 0; max-width: none; height: auto; margin: 0; border-radius: 6px;" />
+</div>
+
 Not much to say here. For all the things I'm into, movies really aren't one of them. I watched **Die Hard** for the first time, it was pretty good. I absolutely loved the skyline shots at dusk. **Shawshank Redemption** is a classic that I'll never get tired of. And **Sinners** was a really fun theatre experience.
 
 ### The list
@@ -101,6 +119,12 @@ Not much to say here. For all the things I'm into, movies really aren't one of t
 | Love Hurts | 3.5 |
 
 ## The shows I watched
+
+<div style="display: flex; gap: 16px; margin: 24px 0;">
+  <img src="/images/fraiser.jpg" alt="Frasier" style="display: inline-block; flex: 1; min-width: 0; max-width: none; height: auto; margin: 0; border-radius: 6px;" />
+  <img src="/images/uma-musume.jpg" alt="Uma Musume" style="display: inline-block; flex: 1; min-width: 0; max-width: none; height: auto; margin: 0; border-radius: 6px;" />
+  <img src="/images/spyxfamily.jpg" alt="Spy x Family" style="display: inline-block; flex: 1; min-width: 0; max-width: none; height: auto; margin: 0; border-radius: 6px;" />
+</div>
 
 Frasier. It’s all just **Frasier**. Before 2025, I only knew it as the show about a guy with a sick new age condo, and now, well, that is still true. But as a child of the 90s, I’ve found something unexpectedly comforting in it. Especially given the absolute state of things in 2025, it became this little escape into what I once hoped adulthood would be like. It’s my new comfort show. I enjoyed it even more than Seinfeld.
 
