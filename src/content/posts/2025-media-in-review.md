@@ -1,6 +1,6 @@
 ---
 title: "2025 Media in review"
-date: 2024-06-20
+date: 2026-02-18
 type: Blog
 ---
 
