@@ -68,12 +68,12 @@ const { Content } = await render(post);
     <nav class="post-nav" aria-label="Post navigation">
       <div class="nav-prev">
         {prevPost && (
-          <a href={`/posts/${prevPost.id}`}><span aria-hidden="true">←</span> {prevPost.data.title}</a>
+          <a href={`${import.meta.env.BASE_URL}posts/${prevPost.id}`}><span aria-hidden="true">←</span> {prevPost.data.title}</a>
         )}
       </div>
       <div class="nav-next">
         {nextPost && (
-          <a href={`/posts/${nextPost.id}`}>{nextPost.data.title} <span aria-hidden="true">→</span></a>
+          <a href={`${import.meta.env.BASE_URL}posts/${nextPost.id}`}>{nextPost.data.title} <span aria-hidden="true">→</span></a>
         )}
       </div>
     </nav>
