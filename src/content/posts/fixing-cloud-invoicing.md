@@ -2,7 +2,8 @@
 title: "Fixing Cloud Invoicing"
 date: 2021-02-15
 type: Project
-company: IBM Cloud (Billing & Cost Management)
+draft: true
+company: IBM Cloud
 timeline: Dec 2019 – Feb 2021
 role: Project Design Lead
 collaborators: Justin Kruger, Hannah Moyers, Kristin Holifield, Tracey King, Mahendra Pingale
@@ -10,71 +11,111 @@ collaborators: Justin Kruger, Hannah Moyers, Kristin Holifield, Tracey King, Mah
 
 ![Cover](/images/invoicing/cover.jpg)
 
+## Roles and responsibilities
+
+- **Led end-to-end design strategy:** Managed sprint planning, roadmaps, and stakeholder alignment presentations.
+- **Drove cross-functional alignment:** Defined user needs through user stories and Jobs to Be Done (JTBD).
+- **Partnered with Research:** Synthesized user interviews and data audits to inform design tasks.
+- **Concepted & Tested:** Iterated on invoice page concepts based on user feedback.
+- **Delivered High-Fidelity Design:** Produced final production-ready assets for the entire invoice experience.
+
+---
+
 ## Project Background
 
-The IBM Cloud Billing & Cost Management team had just completed our State of Billing UX Research project; a design-led effort to build an understanding of our Cloud billing users, their needs, goals and biggest pain points.
+The IBM Cloud Billing team had just completed the State of Billing research project—a design-led initiative to map our users' needs and primary friction points. Alongside an audit of the current experience, we synthesized a massive data set:
+- **Qualitative:** 63 customer interviews and sessions with 6 Support & Success reps.
+- **Quantitative:** 54 survey responses and 80 Usabilla/NPS comments.
 
-Alongside a deep-dive audit of the as-is experience we:
+<div class="emphasis">
 
-- Held 63 customer interviews.
-- Held sessions with 6 Support & Client Success reps.
-- Gathered feedback from 54 survey respondents.
-- Gathered feedback from 80 Usabilla & NPS comments.
+The data showed that the <span class="accent">**invoice experience**</span> was the primary driver of user frustration and operational cost.
+- **Direct Correlation:** 3 of 5 pain point themes related directly to invoicing.
+- **Sentiment:** 22% of all negative NPS comments for IBM IaaS products cited the invoice experience.
+- **Support Burden:** Support teams were fielding 1,000–1,600 billing tickets per month.
+- **Financial Impact:** These issues accounted for approximately $1M/month in support costs.
 
-### Among the many issues we uncovered, the Cloud Invoicing experience was top of the list.
+</div>
 
-- 3/5 overarching billing pain point themes relate directly to the invoice experience.
-- 22% of negative NPS comments from IBM IaaS products directly reference invoicing.
-- Support team fielding 1000-1600 billing-related tickets per month.
-- ~$1M/month in support costs related to billing issues.
+---
 
 ## Project Overview
 
-Directly related to identifying the invoice experience as a primary source of pain for users was a platform-wide technical effort to unify our different cloud billing systems; a direct result of a platform built on multiple acquisitions. Because of this and the business impact we were able to demonstrate, getting stakeholder buy-in to fix the invoicing experience wasn't a challenge.
+The invoice experience was identified as a primary user pain point during a platform-wide effort to unify disparate billing systems inherited through acquisitions. Because of this and the business impact we were able to demonstrate, getting stakeholder buy-in to fix the invoicing experience wasn't a challenge.
 
-### Team Goal
+<div class="emphasis">
 
-> Improve our NPS score and lower support costs by addressing key gaps in our cloud invoicing experience.
+#### Team Goal
+<span class="accent">Improve our NPS score</span> and <span class="accent">lower support costs</span> by addressing key gaps in our cloud invoicing experience.
 
-### Design Objectives
+</div>
 
-- **Understand the problem** — Understand the root causes of the low NPS and high support costs.
-- **Drive alignment around user outcomes** — Drive alignment around user needs and outcomes with collaborators across 3 distinct stakeholder organizations.
-- **Design a solution** — Design a unified invoice reconciliation experience that addresses the billing user's core needs and pain points.
+#### Design Objectives
+
+- **Understand:** Understand root cause of low NPS scores and high support costs.
+- **Drive alignment:** Drive alignment around user needs and outcomes with collaborators across 3 distinct stakeholder organizations.
+- **Design a solution:** Design a unified invoice reconciliation experience that addresses the billing user's core needs and pain points.
+
+---
 
 ## Understanding the User
 
 As part of the initial research we were able to refine our billing archetypes into a specific target user, identify their core use cases as it relates to invoicing, and map them back to our previously identified Jobs to Be Done.
 
-### Who is the user?
-
-In collaboration with our UX researcher we identified 3 core billing personas that work in the Cost Management space.
-
-**Cloud Cost Leaders** — Leaders often manage entire organizations dedicated to optimizing cloud spend, which usually consist of analysts, developers, and finance experts.
+### Cloud Cost <span class="accent">Leaders</span>
+Leaders often manage entire organizations dedicated to optimizing cloud spend, which usually consist of analysts, developers, and finance experts**.
 
 > "My focus is on helping our organization manage their current cloud spend, plan for future cloud spend, and proactively identify ways to optimize our cloud portfolio by using only what we need." — Cloud Optimization Lead, Enterprise
 
-**Cloud Cost Analysts** — Analysts either work in teams focused on optimizing cloud costs, or are lone wolves. They frequently have a development background, and coordinate with dev teams to analyze their costs and make cuts.
+They are involved in the following jobs:
+- Report spend for regular reports
+- Maintain app availability (optimize costs)
+- Send payments from the right place(s)
+- Educate teams on new processes  (cost management focused processes only)
 
-**Cloud Cost Advocates** — Advocates often have a day job as a developer focused on managing resources for themselves or others in their organization. They alone are not responsible for costs, but will often take it upon themselves to alert others when they are spending money on things they're no longer using.
+### Cloud Cost <span class="accent">Analysts</span>
+Analysts either work on small teams focused on optimizing cloud costs, or are lone wolves. They frequently have a development background, and coordinate with dev teams to analyze their costs and make cuts.
+
+> “Their [AWS] cloud explorer gives us recommendations on what our users usage and computation behavior is. From there, we define our automated budget policies.” - Data Science Manager, Enterprise, Technology
+
+They are involved in the following jobs:
+- Report spend for regular reports
+- Maintain app availability (optimize costs)
+
+### Cloud Cost <span class="accent">Advocates</span>
+Advocates often have a day job as a developer focused on managing resources for themselves or others in their organization. They alone are not responsible for costs, but will often take it upon themselves to alert others when they are spending money on things they're no longer using.
+
+> “I look up the owner and say, hey, over the last three months, this high compute device which you requested is not being used as expected. Then they can make the decision about what they're going to do about it.” - Network Engineer, Enterprise, Technology
+
+
+They are involved in the following jobs:
+- Maintain app availability (optimize costs)
+
+---
 
 ### Quote to Cash Journey
 
 The Quote to Cash journey is a reflection of the many stages our developers and billing users go through when paying for their usage. It starts with locating a service and ends with paying for their usage of the service, and ultimately how they manage their payment methods.
 
-This project focused on improving a few specific stages in the overarching Quote to Cash journey: Reconciling an invoice (primary goal) and Monitor usage (related goal).
+This project focused on improving a few specific stages in the overarching Quote to Cash journey: <span class="accent">Reconciling an invoice</span> (primary goal) and <span class="accent">Monitor usage</span> (related goal).
 
 To help the team better understand the needs of our end-users I created a few ideal flows for each of these stages; marrying what I knew to be true about our technical requirements with the needs of the end user. These flows acted as a Northstar for the remainder of the effort.
 
 ![Quote to Cash Journey](/images/invoicing/quote-to-cash.jpg)
 
+![Quote to Cash Journey - Monitor](/images/invoicing/q2c-journey-monitor.jpg)
+
+![Quote to Cash Journey - Reconcile](/images/invoicing/q2c-journey-reconcile.jpg)
+
 ### Use Cases
 
-Alongside the journey mapping, I worked with our Researcher and Product Manager to synthesize the findings from our interviews into specific use cases and validate them with our customers, ultimately connecting them back to our Job to be Done statements.
+Alongside the journey mapping, I worked with our Researcher and Product Manager to synthesize the findings from our interviews into specific use cases and validate them with our customers, ultimately connecting them back to our job statements.
 
 ![Reconcile invoice use cases](/images/invoicing/use-cases.jpg)
 
 Similar to the ideal journey diagrams, these use cases would act as a critical measuring stick for the design work moving forward.
+
+---
 
 ## Design Explorations
 
@@ -92,7 +133,9 @@ Content in the header and footer is mostly straightforward, things like: billing
 
 ![Invoice sections](/images/invoicing/invoice-sections.jpg)
 
-#### The real challenge lies in ensuring charges on the invoice are grouped in a way that makes sense to the user (body section).
+<div class="emphasis">
+The real challenge lies in ensuring charges on the invoice are grouped in a way that makes sense to the user (body section).
+</div>
 
 ### How are users actually billed?
 
@@ -110,9 +153,11 @@ After understanding the billing model, my next step was to determine the best wa
 
 With an initial perspective on the potential approaches to organizing the charges on the invoice I started creating different explorations based on each one.
 
-### Sketches & Design Iterations
+---
 
-Over the course of 6 months I went through 20+ iterations, making adjustments based on scope changes, feedback from Support Reps, feedback from the brand team and users.
+## Sketches & Design Iterations
+
+Over the course of 6 months I went through 20+ iterations, making adjustments based on scope changes, feedback from Support Reps, the brand team and users.
 
 ![Invoice evolution based on continuous feedback loop](/images/invoicing/iterations.jpg)
 
@@ -122,6 +167,8 @@ Outside of the initial recommendations, a few additional improvements were ident
 - The final invoice charge should be noticeable at a glance.
 - Users really care about seeing their discounts.
 - Charges from multiple months can appear on an invoice as an adjustment — this is a point of confusion for users as adjustments are currently grouped with all other charges.
+
+---
 
 ## Usability Testing
 
@@ -150,14 +197,15 @@ The concept tested ultimately grouped content by Service + Plan and then by Metr
 - 30/30 participants were able to match charges on their invoice to charges seen on the Cloud Usage dashboard for the same billing period.
 - 30/30 participants expected to see discounts broken out by service or metric.
 
-## Finalizing Designs
+---
 
-I worked with our researcher to synthesize the feedback from the user feedback sessions and translate into a final invoice template design and updated invoice page. Due to some technical scoping issues we were not able to address feedback related to line-item discounts and showing service instances; to be addressed in a future iteration.
+## Finalizing the Design
 
-### Final Invoice Template Design
+I worked with our researcher to synthesize the feedback from the user interviews and translate into a final invoice template design and updated invoice page. Due to some technical scoping issues we were not able to address feedback related to line-item discounts and showing service instances; to be addressed in a future iteration.
 
 Pictured below is an example of my final invoice template adopted for a US customer paying by Purchase Order. I worked extensively with the CIO office to ensure the template could be adapted to 18 different regions (and languages), any desired currency, and support both Purchase Order and Credit Card scenarios.
 
+### Invoice Template
 ![Final invoice template](/images/invoicing/final-invoice.jpg)
 
 #### Invoice Improvement Notes
@@ -174,7 +222,7 @@ Pictured below is an example of my final invoice template adopted for a US custo
 - Separate section for adjustments to illustrate refunds and original invoice references.
 - Summary section outlining totals and taxes that result in the final charge.
 
-### Final Invoices Page Design
+### Invoices Page Design
 
 Along with the new invoice templates, I worked on delivering an overhaul of the Invoices page in the IBM Cloud Billing experience. Outside of the updated visuals and layout improvements, we were able to fix bugs with the existing page and implement a number of quality of life improvements.
 

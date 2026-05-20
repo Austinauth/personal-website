@@ -200,7 +200,7 @@ function formatDate(date: Date) {
   }
 
   .post-content :global(li) {
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
 
   .post-content :global(a) {
@@ -217,7 +217,7 @@ function formatDate(date: Date) {
     padding-left: 16px;
     margin: 24px 0;
     color: #666;
-    font-style: italic;
+    font-style: normal;
   }
 
   .post-content :global(code) {
@@ -240,6 +240,25 @@ function formatDate(date: Date) {
     background: none;
     padding: 0;
     color: inherit;
+  }
+
+  .post-content :global(.emphasis) {
+    display: block;
+    background: #e8e6e2;
+    padding: 16px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    margin: 24px 0;
+  }
+
+  .post-content :global(.emphasis > *:last-child) {
+    margin-bottom: 0;
+  }
+
+  .post-content :global(hr) {
+    border: none;
+    border-top: 1px solid #d0cdc8;
+    margin: 32px 0;
   }
 
   .post-content :global(img) {

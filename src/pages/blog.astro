@@ -4,9 +4,9 @@ import { getCollection } from 'astro:content';
 
 const posts = await getCollection('posts');
 
-// Filter to blog posts only, sort by date descending
+// Filter to blog posts only (exclude drafts), sort by date descending
 const blogPosts = posts
-  .filter((post) => post.data.type === 'Blog')
+  .filter((post) => post.data.type === 'Blog' && !post.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 // Group by year
