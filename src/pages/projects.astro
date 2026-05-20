@@ -4,9 +4,9 @@ import { getCollection } from 'astro:content';
 
 const posts = await getCollection('posts');
 
-// Filter to project posts only, sort by date descending
+// Filter to project posts only (exclude drafts), sort by date descending
 const projectPosts = posts
-  .filter((post) => post.data.type === 'Project')
+  .filter((post) => post.data.type === 'Project' && !post.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 // Group by year

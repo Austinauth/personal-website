@@ -7,6 +7,7 @@ const posts = defineCollection({
     title: z.string(),
     date: z.date(),
     type: z.enum(['Blog', 'Project']),
+    draft: z.boolean().optional(),
     company: z.string().optional(),
     timeline: z.string().optional(),
     role: z.string().optional(),

@@ -2,6 +2,7 @@
 title: "State of Billing UX Research"
 date: 2020-01-15
 type: Project
+draft: true
 company: IBM Cloud (Billing & Cost Management)
 timeline: Oct 2019 – Jan 2020
 role: Project Design Lead
@@ -10,7 +11,12 @@ collaborators: Kristin Holifield, Hannah Moyers
 
 ![Cover](/images/sob/cover.jpg)
 
+<div class="emphasis">
+
+#### Project significance
 Insights from this effort were used to align the organization around core issues our platform billing users were facing; many costing us millions per month to support.
+
+</div>
 
 ## Background
 
@@ -18,7 +24,9 @@ I had just joined the IBM Cloud Billing & Cost Management team as the new Design
 
 We immediately found billing to be complex, and that we would not be able to solve our user's biggest pain points without focusing on the root causes. The experience had a dangerously low Net Promoter Score (NPS), System Usability Score (SUS), and we were struggling to retain some of our biggest clients.
 
-### It quickly became clear that there were many problems with the billing experience, but we didn't know where to start.
+### It quickly became clear that there were many problems with the billing experience, <span class="accent">but we didn't know where to start.</span>
+
+---
 
 ## Project Overview
 
@@ -45,6 +53,8 @@ Team, stakeholder and VP alignment on biggest opportunity areas; use findings to
 - Actionable pain point themes
 - Opportunity sketches
 
+---
+
 ## As-is Audit
 
 To better understand the existing experience, we began by taking an inventory of IBM Cloud Billing & Cost Management UI. Through the process of IA and User Journey Mapping we discovered that the experience was bloated and riddled with many redundancies.
@@ -57,6 +67,8 @@ To better understand the existing experience, we began by taking an inventory of
 
 ![IA Mapping](/images/sob/ia-mapping.jpg)
 
+---
+
 ## Heuristic Evaluation
 
 Alongside the initial IA & Journey Mapping we also conducted a heuristic analysis of the experience using the Nielson Norman Group's [10 Usability Heuristics for User Interface Design](https://www.nngroup.com/articles/ten-usability-heuristics/) framework.
@@ -64,6 +76,8 @@ Alongside the initial IA & Journey Mapping we also conducted a heuristic analysi
 For each of the 10 heuristic principals in the framework we assigned ourselves a compliance score of Poor, Pass, or Exceeds. Needless to say we scored Poor on all 10.
 
 ![Heuristic Evaluation](/images/sob/heuristics.jpg)
+
+---
 
 ## Interviews & User Feedback
 
@@ -82,6 +96,12 @@ Upon completion of the initial experience audit, journey mapping and interviews,
 - 5 actionable pain point themes
 
 ![Synthesis](/images/sob/synthesis.jpg)
+
+---
+
+## With the initial research complete, what did we find?
+
+---
 
 ## User Archetypes
 
@@ -110,17 +130,29 @@ With each job we captured the steps a typical user takes to complete it (job ste
 
 ![Jobs to Be Done](/images/sob/jtbd.jpg)
 
+---
+
 ## Pain Point Themes
 
 We synthesized the 100+ pain points identified in our interview sessions and experience audit into 5 actionable themes we could use to align the team.
 
-### Ultimately, we were at risk of losing our customers because...
+#### Ultimately, we were <span class="accent">at risk of losing our customers</span> because...
 
 ### Billing periods are inconsistent & confusing
 
 Because IBM Cloud utilizes multiple billing systems, understanding how and when you will be billed for resources and usage is extremely difficult. Users expect to be invoiced on a regular, repeatable cadence at a minimum. Industry best practices have set an expectation that this will be once a month.
 
 > "I see Baremetal servers that were billed in June. And then I see a monthly June usage. So right away that's a bit confusing. I'm thinking about telephone bills and energy bills. It's by month, so it's not by month plus." — CTO, SMB
+
+<div class="emphasis">
+
+#### Related Pain Points
+- Cannot easily map usage or spending to a single month
+- Billing periods inconsistent with industry standards
+- Users can receive multiple different invoices per month
+- Usage page filters do not map to billing periods  
+
+</div>
 
 ### Reconciling invoices is hard
 
@@ -130,6 +162,17 @@ When users attempt to reconcile or balance their spending, it's almost impossibl
 - ~$1M/month of support costs were invoice related
 
 > "You could be billing me for something that I shouldn't be billed for or not billing me for something I should be billed for, but I can't possibly cross reference this because there's no way for me to figure it out." — Cloud Ops Coordinator, Enterprise
+
+<div class="emphasis">
+
+#### Related Pain Points
+- Invoices not granular enough - multiple items rolled into one overarching reference
+- Cannot map items on invoice back to Usage dashboard in the Cloud UI
+- Some invoices list all items as $0, even when they’re not
+- User’s must open each $0 line item to confirm it’s actually $0
+- Users receive multiple $0 invoices for services added but not in use
+
+</div>
 
 ### Invoicing can be delayed
 
@@ -153,15 +196,19 @@ From redundant page titles, to confusing instructions, to poor performance, user
 
 - Overall system usability score (SUS) of 51
 
+---
+
 ## Outcomes & Deliverables
 
-We synthesized our findings into an easily digestible research artifact and presented to the Cloud organization, including PMs and VPs. The presentation focused on key pain points, supported by examples and customer feedback; outlining the potential (and realized) costs to the business. We also included design concepts and actionable approaches to tackling the identified issues and measuring success.
+We synthesized our findings into an easily digestible research artifact and presented to the Cloud organization, including PMs and VPs. The presentation focused on key pain points, supported by examples and customer feedback; outlining the potential (and realized) costs to the business. 
+
+We also included design concepts and actionable approaches to tackling the identified issues and measuring success.
 
 ![Deliverables](/images/sob/deliverables.jpg)
 
-### Outcomes
+This research was a foundational step in getting organizational buy-in around the challenges our billing users were facing on a daily basis. Before this project, the organization was relatively aimless in its approach to cloud billing and cost management. 
 
-This research was a foundational step in getting organizational buy-in around the challenges our billing users were facing on a daily basis. Before this project, the organization was relatively aimless in its approach to cloud billing and cost management. Equipped with a newfound understanding of our users, their goals and pain points, we were able to confidently identify and prioritize a project roadmap that would guide us for the following years.
+Equipped with a newfound understanding of our users, their goals and pain points, we were able to confidently identify and prioritize a project roadmap that would guide us for the following years.
 
 - Prioritized 2020/21 IBM Cloud Billing vision and roadmap
 - Synthesis of over 60+ user interviews into archetypes, JTBD and pain point themes
