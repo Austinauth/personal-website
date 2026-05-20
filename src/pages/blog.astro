@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { formatDate } from '../utils/formatDate';
 
 const posts = await getCollection('posts');
 
@@ -18,16 +19,6 @@ const postsByYear = blogPosts.reduce((acc, post) => {
 }, {} as Record<number, typeof blogPosts>);
 
 const years = Object.keys(postsByYear).map(Number).sort((a, b) => b - a);
-
-function formatDate(date: Date) {
-  const day = date.getDate();
-  const suffix = day === 1 || day === 21 || day === 31 ? 'st' 
-    : day === 2 || day === 22 ? 'nd' 
-    : day === 3 || day === 23 ? 'rd' 
-    : 'th';
-  const month = date.toLocaleDateString('en-US', { month: 'short' });
-  return `${month} ${day}${suffix}`;
-}
 ---
 
 <Layout title="Blog - Austin Auth">
@@ -40,7 +31,7 @@ function formatDate(date: Date) {
         {postsByYear[year].map((post) => (
           <li class="post-item">
             <a href={`/posts/${post.id}`} class="post-title">{post.data.title}</a>
-            <span class="post-date">{formatDate(post.data.date)}</span>
+            <span class="post-date">{formatDate(post.data.date, false)}</span>
           </li>
         ))}
       </ul>

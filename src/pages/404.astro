@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page not found - Austin Auth">
+  <section class="not-found">
+    <h1>404</h1>
+    <p>The page you're looking for doesn't exist.</p>
+    <a href="/" class="back-link">Back to home</a>
+  </section>
+</Layout>
+
+<style>
+  .not-found {
+    text-align: center;
+    padding: 80px 0;
+  }
+
+  h1 {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #c97070;
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: 32px;
+    color: #737373;
+  }
+
+  .back-link {
+    font-size: 16px;
+    color: #c97070;
+    text-decoration: underline;
+  }
+
+  .back-link:hover {
+    color: #1a1a1a;
+  }
+</style>

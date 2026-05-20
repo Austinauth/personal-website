@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
+import { formatDate } from '../../utils/formatDate';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -19,17 +20,6 @@ export async function getStaticPaths() {
 
 const { post, prevPost, nextPost } = Astro.props;
 const { Content } = await render(post);
-
-function formatDate(date: Date) {
-  const day = date.getDate();
-  const suffix = day === 1 || day === 21 || day === 31 ? 'st' 
-    : day === 2 || day === 22 ? 'nd' 
-    : day === 3 || day === 23 ? 'rd' 
-    : 'th';
-  const month = date.toLocaleDateString('en-US', { month: 'short' });
-  const year = date.getFullYear();
-  return `${month} ${day}${suffix} ${year}`;
-}
 ---
 
 <Layout title={`${post.data.title} - Austin Auth`}>

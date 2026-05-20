@@ -1,23 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactSection from '../components/ContactSection.astro';
 import { getCollection } from 'astro:content';
+import { formatDate } from '../utils/formatDate';
 
 const posts = await getCollection('posts');
 const sorted = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const recentBlog = sorted.filter(p => p.data.type === 'Blog' && !p.data.draft).slice(0, 4);
 const recentProjects = sorted.filter(p => p.data.type === 'Project' && !p.data.draft).slice(0, 4);
-
-function formatDate(date: Date) {
-  const day = date.getDate();
-  const suffix = day === 1 || day === 21 || day === 31 ? 'st' 
-    : day === 2 || day === 22 ? 'nd' 
-    : day === 3 || day === 23 ? 'rd' 
-    : 'th';
-  const month = date.toLocaleDateString('en-US', { month: 'short' });
-  const year = date.getFullYear();
-  return `${month} ${day}${suffix}, ${year}`;
-}
 ---
 
 <Layout title="Austin Auth - Product Designer">
@@ -66,19 +57,7 @@ function formatDate(date: Date) {
 
   <hr class="divider" />
 
-  <section class="contact-section">
-    <h2>Contact info</h2>
-    <p class="contact-text">If you'd like to get in touch, please feel free to reach out via email (best) or find me on my socials.</p>
-    <div class="contact-links">
-      <a href="mailto:hello@austinauth.com">email</a>
-      <span class="contact-sep">/</span>
-      <a href="https://github.com/austinauth" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in new tab)</span></a>
-      <span class="contact-sep">/</span>
-      <a href="https://dribbble.com/austinauth" target="_blank" rel="noopener noreferrer">Dribbble<span class="sr-only"> (opens in new tab)</span></a>
-      <span class="contact-sep">/</span>
-      <a href="https://linkedin.com/in/austinauth" target="_blank" rel="noopener noreferrer">LinkedIn<span class="sr-only"> (opens in new tab)</span></a>
-    </div>
-  </section>
+  <ContactSection />
 </Layout>
 
 <style>
@@ -168,44 +147,6 @@ function formatDate(date: Date) {
 
   .see-all:hover {
     color: #c97070;
-  }
-
-  .contact-section {
-    margin-bottom: 48px;
-  }
-
-  .contact-section h2 {
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 16px;
-  }
-
-  .contact-text {
-    font-size: 16px;
-    line-height: 1.7;
-    color: #1a1a1a;
-    margin-bottom: 16px;
-  }
-
-  .contact-links {
-    display: flex;
-    gap: 8px;
-    align-items: baseline;
-    font-size: 16px;
-  }
-
-  .contact-links a {
-    color: #c97070;
-    text-decoration: underline;
-    transition: color 0.2s;
-  }
-
-  .contact-links a:hover {
-    color: #a85858;
-  }
-
-  .contact-sep {
-    color: #ccc;
   }
 
   .divider {
