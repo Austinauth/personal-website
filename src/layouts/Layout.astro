@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import gardenFooter from '../assets/garden-footer.jpg';
 
 interface Props {
   title: string;
@@ -80,7 +82,7 @@ const hasProjects = posts.some((post) => post.data.type === 'Project' && !post.d
     </div>
     <footer style="position: relative; width: 100%; line-height: 0; overflow: hidden; margin-top: -40px;">
       <div style="position: absolute; top: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to bottom, #f5f3ef 0%, #f5f3ef 10%, rgba(245,243,239,0) 100%); z-index: 1; pointer-events: none;"></div>
-      <img src="/images/garden-footer.jpg" alt="" style="width: 100%; height: 65vh; display: block; object-fit: cover; object-position: center 25%;" />
+      <Image src={gardenFooter} alt="" width={1600} format="webp" quality={75} style="width: 100%; height: 65vh; display: block; object-fit: cover; object-position: center 25%;" loading="lazy" />
     </footer>
     <script>
       const header = document.querySelector('.site-header');

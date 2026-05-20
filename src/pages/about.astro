@@ -1,12 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import mePhoto from '../assets/me-2.jpg';
 ---
 
 <Layout title="About - Austin Auth">
   <section class="about">
     <h1>About</h1>
     <div class="content">
-      <img src="/images/me-2.jpg" alt="Austin Auth" class="about-photo" />
+      <Image src={mePhoto} alt="Austin Auth" class="about-photo" width={400} format="webp" quality={80} loading="eager" />
       <p>
         Hey, thanks for taking a moment to stop by. If you’re reading this, there is a good chance you already know I’m a Senior Product Designer at Microsoft within the CoreAI division. And if you didn’t, well, now you do.
       </p>
