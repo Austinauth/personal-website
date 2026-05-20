@@ -75,20 +75,21 @@ function formatDate(date: Date) {
     <div class="post-content">
       <Content />
     </div>
-    <nav class="post-nav">
+    <nav class="post-nav" aria-label="Post navigation">
       <div class="nav-prev">
         {prevPost && (
-          <a href={`/posts/${prevPost.id}`}>← {prevPost.data.title}</a>
+          <a href={`/posts/${prevPost.id}`}><span aria-hidden="true">←</span> {prevPost.data.title}</a>
         )}
       </div>
       <div class="nav-next">
         {nextPost && (
-          <a href={`/posts/${nextPost.id}`}>{nextPost.data.title} →</a>
+          <a href={`/posts/${nextPost.id}`}>{nextPost.data.title} <span aria-hidden="true">→</span></a>
         )}
       </div>
     </nav>
   </article>
-  <div id="lightbox" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;cursor:pointer;justify-content:center;align-items:center;padding:40px;">
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged image" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:1000;cursor:pointer;justify-content:center;align-items:center;padding:40px;">
+    <button id="lightbox-close" aria-label="Close image" style="position:absolute;top:16px;right:16px;background:none;border:none;color:#fff;font-size:32px;cursor:pointer;padding:8px;line-height:1;">&times;</button>
     <img id="lightbox-img" src="" alt="" style="max-width:90vw;max-height:90vh;object-fit:contain;border-radius:6px;" />
   </div>
 </Layout>
@@ -97,18 +98,45 @@ function formatDate(date: Date) {
   document.addEventListener('DOMContentLoaded', function() {
     var lightbox = document.getElementById('lightbox');
     var lightboxImg = document.getElementById('lightbox-img');
+    var closeBtn = document.getElementById('lightbox-close');
+    var lastFocused = null;
+
+    function openLightbox(img) {
+      lastFocused = document.activeElement;
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || 'Enlarged view';
+      lightbox.style.display = 'flex';
+      closeBtn.focus();
+    }
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+      if (lastFocused) lastFocused.focus();
+    }
 
     document.querySelectorAll('.post-content img').forEach(function(img) {
       img.style.cursor = 'pointer';
-      img.addEventListener('click', function() {
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightbox.style.display = 'flex';
+      img.setAttribute('tabindex', '0');
+      img.setAttribute('role', 'button');
+      img.setAttribute('aria-label', (img.alt || 'Image') + ' — click to enlarge');
+      img.addEventListener('click', function() { openLightbox(img); });
+      img.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(img);
+        }
       });
     });
 
-    lightbox.addEventListener('click', function() {
-      lightbox.style.display = 'none';
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', function(e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && lightbox.style.display === 'flex') {
+        closeLightbox();
+      }
     });
   });
 </script>
@@ -162,7 +190,7 @@ function formatDate(date: Date) {
   }
 
   .detail-label {
-    color: #888;
+    color: #737373;
     width: 130px;
     flex-shrink: 0;
     font-style: italic;

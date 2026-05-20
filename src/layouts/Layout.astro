@@ -60,15 +60,31 @@ const hasProjects = posts.some((post) => post.data.type === 'Project' && !post.d
         width: 22px;
         height: 22px;
       }
+      .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 16px;
+        z-index: 200;
+        padding: 8px 16px;
+        background: #1a1a1a;
+        color: #f5f3ef;
+        border-radius: 4px;
+        font-size: 14px;
+        text-decoration: none;
+      }
+      .skip-link:focus {
+        top: 8px;
+      }
     </style>
   </head>
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header class="site-header">
       <div class="header-inner">
         <a href="/" class="logo" aria-label="Home">
           <img src="/leaf-2.svg" alt="" />
         </a>
-        <nav class="site-nav">
+        <nav class="site-nav" aria-label="Main navigation">
           {hasBlogPosts && <a href="/blog">Blog</a>}
           {hasProjects && <a href="/projects">Projects</a>}
           <a href="/about">About</a>
@@ -76,7 +92,7 @@ const hasProjects = posts.some((post) => post.data.type === 'Project' && !post.d
       </div>
     </header>
     <div class="container">
-      <main>
+      <main id="main-content">
         <slot />
       </main>
     </div>
@@ -156,7 +172,7 @@ const hasProjects = posts.some((post) => post.data.type === 'Project' && !post.d
 
   .site-nav a {
     font-size: 14px;
-    color: #666;
+    color: #555;
     transition: color 0.2s;
   }
 
@@ -166,5 +182,35 @@ const hasProjects = posts.some((post) => post.data.type === 'Project' && !post.d
 
   main {
     padding-bottom: 20px;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    outline: 2px solid #c97070;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Screen reader only utility */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 </style>
