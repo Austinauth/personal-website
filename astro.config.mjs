@@ -7,7 +7,4 @@ export default defineConfig({
   site: 'https://austinauth.com',
   output: 'static',
   integrations: [sitemap()],
-  image: {
-    quality: 80,
-  },
 });
