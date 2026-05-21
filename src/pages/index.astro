@@ -44,6 +44,7 @@ const projectYears = Object.keys(projectsByYear).map(Number).sort((a, b) => b - 
     <button class="tab active" data-tab="posts">Posts</button>
     <button class="tab" data-tab="projects">Projects</button>
     <button class="tab" data-tab="about">About</button>
+    <span class="tab-indicator"></span>
   </nav>
 
   <hr class="divider" />
@@ -84,14 +85,60 @@ const projectYears = Object.keys(projectsByYear).map(Number).sort((a, b) => b - 
     <div class="about-content">
       <Image src={mePhoto} alt="Austin Auth" class="about-photo" width={400} format="webp" quality={80} loading="lazy" />
       <p>
-        Hey, thanks for taking a moment to stop by. If you're reading this, there is a good chance you already know I'm a Senior Product Designer at Microsoft within the CoreAI division. And if you didn't, well, now you do.
-      </p>
-      <p>
-        Over the last 12ish years I have focused on building products for developers, specifically within the cloud and AI space. If you are a dev, you might be familiar with some of the tools I've helped design at places like IBM, Microsoft, and Pluralsight. This includes work on Azure CLI tools, VS Code extensions, GitHub Copilot, and IBM Cloud's billing and invoicing experience.
+        Hey, thanks for taking a moment to stop by. Over the last 12ish years I have focused on building products for developers, specifically within the cloud and AI space. If you are a dev, you might be familiar with some of the tools I've helped design at places like IBM, Microsoft, and Pluralsight. This includes work on Azure CLI tools, VS Code extensions, GitHub Copilot, and IBM Cloud's billing and invoicing experience.
       </p>
       <p>
         On a personal level, my interests are constantly changing. Collecting is probably my biggest passion. Currently, I am hunting for retro video games, Pokémon cards, Sofubi, and vintage horror paperbacks. I don't watch a ton of TV or movies, but when I do, it is usually something scary. I also love Japanese pro-wrestling and have recently gotten into watching Grand Sumo in a big way.
       </p>
+
+      <h2 class="experience-heading">Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Senior Designer</h3>
+            <p class="timeline-company">Microsoft</p>
+            <p class="timeline-date">May 2022 - Present</p>
+            <p class="timeline-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at urna vehicula, lacinia augue in, interdum libero. Ut urna leo, rhoncus at porttitor ut, fringilla id turpis.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Senior Designer</h3>
+            <p class="timeline-company">Pluralsight</p>
+            <p class="timeline-date">Jan 2020 - May 2022</p>
+            <p class="timeline-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at urna vehicula, lacinia augue in, interdum libero. Ut urna leo, rhoncus at porttitor ut, fringilla id turpis.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Product Designer</h3>
+            <p class="timeline-company">IBM</p>
+            <p class="timeline-date">Jun 2017 - Jan 2020</p>
+            <p class="timeline-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at urna vehicula, lacinia augue in, interdum libero. Ut urna leo, rhoncus at porttitor ut, fringilla id turpis.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>UX Designer</h3>
+            <p class="timeline-company">ActiveProspect</p>
+            <p class="timeline-date">Mar 2015 - Jun 2017</p>
+            <p class="timeline-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at urna vehicula, lacinia augue in, interdum libero. Ut urna leo, rhoncus at porttitor ut, fringilla id turpis.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>Designer</h3>
+            <p class="timeline-company">Freelance</p>
+            <p class="timeline-date">Jan 2013 - Mar 2015</p>
+            <p class="timeline-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at urna vehicula, lacinia augue in, interdum libero. Ut urna leo, rhoncus at porttitor ut, fringilla id turpis.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -144,6 +191,16 @@ const projectYears = Object.keys(projectsByYear).map(Number).sort((a, b) => b - 
     display: flex;
     gap: 24px;
     margin-top: 48px;
+    position: relative;
+  }
+
+  .tab-indicator {
+    position: absolute;
+    bottom: -17px;
+    height: 2px;
+    background: #c97070;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 1px;
   }
 
   .tab {
@@ -242,6 +299,62 @@ const projectYears = Object.keys(projectsByYear).map(Number).sort((a, b) => b - 
     margin-bottom: 16px;
   }
 
+  .experience-heading {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 32px;
+    margin-bottom: 24px;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 24px;
+    border-left: 1px solid #ddd;
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: 32px;
+  }
+
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -30px;
+    top: 9px;
+    width: 12px;
+    height: 12px;
+    background: #c97070;
+    border-radius: 50%;
+  }
+
+  .timeline-content h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .timeline-company {
+    font-size: 15px;
+    color: #1a1a1a;
+    margin-bottom: 2px;
+  }
+
+  .timeline-date {
+    font-size: 14px;
+    color: #737373;
+    margin-bottom: 12px;
+  }
+
+  .timeline-desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #1a1a1a;
+  }
+
   .site-footer {
     display: flex;
     gap: 8px;
@@ -267,6 +380,17 @@ const projectYears = Object.keys(projectsByYear).map(Number).sort((a, b) => b - 
 <script>
   const tabs = document.querySelectorAll('.tab');
   const panels = document.querySelectorAll('.tab-content');
+  const indicator = document.querySelector('.tab-indicator') as HTMLElement;
+
+  function moveIndicator(tab: Element) {
+    const el = tab as HTMLElement;
+    indicator.style.left = `${el.offsetLeft}px`;
+    indicator.style.width = `${el.offsetWidth}px`;
+  }
+
+  // Set initial position
+  const activeTab = document.querySelector('.tab.active');
+  if (activeTab) moveIndicator(activeTab);
 
   tabs.forEach((tab) => {
     tab.addEventListener('click', () => {
@@ -277,6 +401,7 @@ const projectYears = Object.keys(projectsByYear).map(Number).sort((a, b) => b - 
 
       tab.classList.add('active');
       document.getElementById(`tab-${target}`)?.classList.add('active');
+      moveIndicator(tab);
     });
   });
 </script>
