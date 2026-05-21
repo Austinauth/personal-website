@@ -1,14 +1,33 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContactSection from '../components/ContactSection.astro';
 import { getCollection } from 'astro:content';
 import { formatDate } from '../utils/formatDate';
+import { Image } from 'astro:assets';
+import mePhoto from '../assets/me-2.jpg';
 
 const posts = await getCollection('posts');
 const sorted = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-const recentBlog = sorted.filter(p => p.data.type === 'Blog' && !p.data.draft).slice(0, 4);
-const recentProjects = sorted.filter(p => p.data.type === 'Project' && !p.data.draft).slice(0, 4);
+const blogPosts = sorted.filter(p => p.data.type === 'Blog' && !p.data.draft);
+const projectPosts = sorted.filter(p => p.data.type === 'Project' && !p.data.draft);
+
+// Group blog posts by year
+const blogByYear = blogPosts.reduce((acc, post) => {
+  const year = post.data.date.getFullYear();
+  if (!acc[year]) acc[year] = [];
+  acc[year].push(post);
+  return acc;
+}, {} as Record<number, typeof blogPosts>);
+const blogYears = Object.keys(blogByYear).map(Number).sort((a, b) => b - a);
+
+// Group project posts by year
+const projectsByYear = projectPosts.reduce((acc, post) => {
+  const year = post.data.date.getFullYear();
+  if (!acc[year]) acc[year] = [];
+  acc[year].push(post);
+  return acc;
+}, {} as Record<number, typeof projectPosts>);
+const projectYears = Object.keys(projectsByYear).map(Number).sort((a, b) => b - a);
 ---
 
 <Layout title="Austin Auth - Product Designer">
@@ -17,50 +36,84 @@ const recentProjects = sorted.filter(p => p.data.type === 'Project' && !p.data.d
     <p class="subtitle">Product designer</p>
   </section>
 
-  <p class="intro">Hello, I'm Austin, a Senior Product Designer at Microsoft working within their CoreAI division. Before that, I spent time at IBM, Pluralsight, and ActiveProspect.</p>
+  <p class="intro">I'm Austin, a Senior Product Designer at Microsoft working within the CoreAI division. Before that, I spent time at IBM, Pluralsight, and ActiveProspect.</p>
 
-  <p class="intro intro-last">Lately, I've been designing AI tools for developers like the Azure SRE agent and GitHub Copilot. My previous work spans cloud compute, billing and education, VS Code extensions, and developer CLI tools. I hope you'll stick around for a bit and see what I've been building.</p>
+  <p class="intro intro-last">Lately, I've been designing AI tools for developers like the Azure SRE agent. My previous work spans cloud compute, billing and education, VS Code extensions, and developer CLI tools. I hope you'll stick around for a bit and see what I've been building.</p>
 
-  <hr class="divider" />
-
-  <section class="feed-section">
-    <div class="feed-header">
-      <h2>Latest blog posts</h2>
-      <a href={`${import.meta.env.BASE_URL}/blog`} class="see-all">See all posts</a>
-    </div>
-    <ul class="posts-list">
-      {recentBlog.map((post) => (
-        <li class="post-item">
-          <a href={`${import.meta.env.BASE_URL}/posts/${post.id}`} class="post-title">{post.data.title}</a>
-          <span class="post-date">{formatDate(post.data.date)}</span>
-        </li>
-      ))}
-    </ul>
-  </section>
-
-  {recentProjects.length > 0 && (
-  <section class="feed-section">
-    <div class="feed-header">
-      <h2>Recent projects</h2>
-      <a href={`${import.meta.env.BASE_URL}/projects`} class="see-all">See all projects</a>
-    </div>
-    <ul class="posts-list">
-      {recentProjects.map((post) => (
-        <li class="post-item">
-          <a href={`${import.meta.env.BASE_URL}posts/${post.id}`} class="post-title">{post.data.title}</a>
-          <span class="post-date">{formatDate(post.data.date)}</span>
-        </li>
-      ))}
-    </ul>
-  </section>
-  )}
+  <nav class="tabs" aria-label="Content sections">
+    <button class="tab active" data-tab="posts">Posts</button>
+    <button class="tab" data-tab="projects">Projects</button>
+    <button class="tab" data-tab="about">About</button>
+  </nav>
 
   <hr class="divider" />
 
-  <ContactSection />
+  <section class="tab-content active" id="tab-posts">
+    {blogYears.map((year) => (
+      <div class="year-section">
+        <h2>{year}</h2>
+        <ul class="posts-list">
+          {blogByYear[year].map((post) => (
+            <li class="post-item">
+              <a href={`${import.meta.env.BASE_URL}/posts/${post.id}`} class="post-title">{post.data.title}</a>
+              <span class="post-date">{formatDate(post.data.date, false)}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </section>
+
+  <section class="tab-content" id="tab-projects">
+    {projectYears.length > 0 ? projectYears.map((year) => (
+      <div class="year-section">
+        <h2>{year}</h2>
+        <ul class="posts-list">
+          {projectsByYear[year].map((post) => (
+            <li class="post-item">
+              <a href={`${import.meta.env.BASE_URL}/posts/${post.id}`} class="post-title">{post.data.title}</a>
+              <span class="post-date">{formatDate(post.data.date, false)}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )) : <p class="coming-soon">Coming soon.</p>}
+  </section>
+
+  <section class="tab-content" id="tab-about">
+    <div class="about-content">
+      <Image src={mePhoto} alt="Austin Auth" class="about-photo" width={400} format="webp" quality={80} loading="lazy" />
+      <p>
+        Hey, thanks for taking a moment to stop by. If you're reading this, there is a good chance you already know I'm a Senior Product Designer at Microsoft within the CoreAI division. And if you didn't, well, now you do.
+      </p>
+      <p>
+        Over the last 12ish years I have focused on building products for developers, specifically within the cloud and AI space. If you are a dev, you might be familiar with some of the tools I've helped design at places like IBM, Microsoft, and Pluralsight. This includes work on Azure CLI tools, VS Code extensions, GitHub Copilot, and IBM Cloud's billing and invoicing experience.
+      </p>
+      <p>
+        On a personal level, my interests are constantly changing. Collecting is probably my biggest passion. Currently, I am hunting for retro video games, Pokémon cards, Sofubi, and vintage horror paperbacks. I don't watch a ton of TV or movies, but when I do, it is usually something scary. I also love Japanese pro-wrestling and have recently gotten into watching Grand Sumo in a big way.
+      </p>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <footer class="site-footer">
+    <a href="mailto:hello@austinauth.com">Email</a>
+    <span class="footer-sep">/</span>
+    <a href="https://github.com/austinauth" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <span class="footer-sep">/</span>
+    <a href="https://linkedin.com/in/austinauth" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </footer>
 </Layout>
 
 <style>
+  .coming-soon {
+    color: #888;
+    font-style: italic;
+    padding: 48px 0;
+    text-align: center;
+  }
+
   .hero {
     margin-bottom: 48px;
   }
@@ -84,23 +137,57 @@ const recentProjects = sorted.filter(p => p.data.type === 'Project' && !p.data.d
 
   .subtitle {
     font-size: 16px;
+    color: #737373;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .tab {
+    background: none;
+    border: none;
+    font-family: inherit;
+    font-size: 16px;
+    color: #1a1a1a;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s;
+  }
+
+  .tab:hover {
+    color: #737373;
+  }
+
+  .tab.active,
+  .tab.active:hover {
     color: #c97070;
   }
 
-  .feed-section {
-    margin-bottom: 40px;
+  .divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 16px 0 32px;
   }
 
-  .feed-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 16px;
+  .tab-content {
+    display: none;
   }
 
-  h2 {
+  .tab-content.active {
+    display: block;
+  }
+
+  .year-section {
+    margin-bottom: 48px;
+  }
+
+  .year-section h2 {
     font-size: 16px;
     font-weight: 600;
+    margin-bottom: 16px;
   }
 
   .posts-list {
@@ -138,24 +225,58 @@ const recentProjects = sorted.filter(p => p.data.type === 'Project' && !p.data.d
     color: #c97070;
   }
 
-  .see-all {
-    font-size: 14px;
-    color: #737373;
-    text-decoration: underline;
+  .about-content {
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  .about-photo {
+    width: 100%;
+    max-height: 360px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 24px;
+  }
+
+  .about-content p {
+    margin-bottom: 16px;
+  }
+
+  .site-footer {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    font-size: 16px;
+    margin-bottom: 48px;
+  }
+
+  .site-footer a {
+    color: #1a1a1a;
     transition: color 0.2s;
   }
 
-  .see-all:hover {
+  .site-footer a:hover {
     color: #c97070;
   }
 
-  .divider {
-    border: none;
-    border-top: 1px solid #e0ddd8;
-    margin: 40px 0;
-  }
-
-  .accent {
-    color: #c97070;
+  .footer-sep {
+    color: #737373;
   }
 </style>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.tab-content');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.getAttribute('data-tab');
+
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+
+      tab.classList.add('active');
+      document.getElementById(`tab-${target}`)?.classList.add('active');
+    });
+  });
+</script>

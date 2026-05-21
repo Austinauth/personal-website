@@ -8,14 +8,20 @@ export async function getStaticPaths() {
   // Sort posts by date descending
   const sortedPosts = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
   
-  return sortedPosts.map((post, index) => ({
-    params: { slug: post.id },
-    props: { 
-      post,
-      prevPost: index < sortedPosts.length - 1 ? sortedPosts[index + 1] : null,
-      nextPost: index > 0 ? sortedPosts[index - 1] : null,
-    },
-  }));
+  return sortedPosts.map((post) => {
+    // Only link to posts of the same type (Blog -> Blog, Project -> Project)
+    const sameTypePosts = sortedPosts.filter((p) => p.data.type === post.data.type);
+    const indexInType = sameTypePosts.indexOf(post);
+    
+    return {
+      params: { slug: post.id },
+      props: { 
+        post,
+        prevPost: indexInType < sameTypePosts.length - 1 ? sameTypePosts[indexInType + 1] : null,
+        nextPost: indexInType > 0 ? sameTypePosts[indexInType - 1] : null,
+      },
+    };
+  });
 }
 
 const { post, prevPost, nextPost } = Astro.props;
