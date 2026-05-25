@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import { formatDate } from '../utils/formatDate';
 import { Image } from 'astro:assets';
-import mePhoto from '../assets/me-2.jpg';
+import mePhoto from '../assets/selfie-v2.png';
 
 const posts = await getCollection('posts');
 const sorted = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
@@ -83,7 +83,7 @@ const projectYears = Object.keys(projectsByYear).map(Number).sort((a, b) => b - 
 
   <section class="tab-content" id="tab-about">
     <div class="about-content">
-      <Image src={mePhoto} alt="Austin Auth" class="about-photo" width={400} format="webp" quality={80} loading="lazy" />
+      <Image src={mePhoto} alt="Austin Auth" class="about-photo" width={800} quality={90} loading="lazy" />
       <p>
         Hey, thanks for taking a moment to stop by. Over the last 12ish years I have focused on building products for developers, specifically within the cloud and AI space. If you are a dev, you might be familiar with some of the tools I've helped design at places like IBM, Microsoft, and Pluralsight. This includes work on Azure CLI tools, VS Code extensions, GitHub Copilot, and IBM Cloud's billing and invoicing experience.
       </p>
@@ -99,7 +99,7 @@ const projectYears = Object.keys(projectsByYear).map(Number).sort((a, b) => b - 
             <h3>Senior Designer</h3>
             <p class="timeline-company">Microsoft</p>
             <p class="timeline-date">May 2022 - Present</p>
-            <p class="timeline-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at urna vehicula, lacinia augue in, interdum libero. Ut urna leo, rhoncus at porttitor ut, fringilla id turpis.</p>
+            <p class="timeline-desc">Designing developer tools and AI experiences within the CoreAI division, including work on Azure CLI tools, VS Code extensions, and GitHub Copilot.</p>
           </div>
         </div>
         <div class="timeline-item">
@@ -107,17 +107,17 @@ const projectYears = Object.keys(projectsByYear).map(Number).sort((a, b) => b - 
           <div class="timeline-content">
             <h3>Senior Designer</h3>
             <p class="timeline-company">Pluralsight</p>
-            <p class="timeline-date">Jan 2020 - May 2022</p>
-            <p class="timeline-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at urna vehicula, lacinia augue in, interdum libero. Ut urna leo, rhoncus at porttitor ut, fringilla id turpis.</p>
+            <p class="timeline-date">May 2021 - May 2022</p>
+            <p class="timeline-desc">Led design on B2B product-led growth initiatives and the Search & Discovery experience. Also led integration design efforts after A Cloud Guru was acquired by Pluralsight.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3>Product Designer</h3>
+            <h3>Design Lead</h3>
             <p class="timeline-company">IBM</p>
-            <p class="timeline-date">Jun 2017 - Jan 2020</p>
-            <p class="timeline-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at urna vehicula, lacinia augue in, interdum libero. Ut urna leo, rhoncus at porttitor ut, fringilla id turpis.</p>
+            <p class="timeline-date">Jan 2019 - May 2021</p>
+            <p class="timeline-desc">Led a design team focused on IBM Cloud's Billing and Cost Management experience. Shipped 10+ billing initiatives that reduced support tickets and strengthened enterprise partnerships.</p>
           </div>
         </div>
         <div class="timeline-item">
@@ -125,17 +125,17 @@ const projectYears = Object.keys(projectsByYear).map(Number).sort((a, b) => b - 
           <div class="timeline-content">
             <h3>UX Designer</h3>
             <p class="timeline-company">ActiveProspect</p>
-            <p class="timeline-date">Mar 2015 - Jun 2017</p>
-            <p class="timeline-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at urna vehicula, lacinia augue in, interdum libero. Ut urna leo, rhoncus at porttitor ut, fringilla id turpis.</p>
+            <p class="timeline-date">Jul 2017 - Jan 2019</p>
+            <p class="timeline-desc">Led product design on ActiveProspect's LeadConduit and TrustedForm platforms, defining the end-to-end design delivery process and conducting usability research.</p>
           </div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <h3>Designer</h3>
-            <p class="timeline-company">Freelance</p>
-            <p class="timeline-date">Jan 2013 - Mar 2015</p>
-            <p class="timeline-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis at urna vehicula, lacinia augue in, interdum libero. Ut urna leo, rhoncus at porttitor ut, fringilla id turpis.</p>
+            <h3>UX Designer</h3>
+            <p class="timeline-company">IBM</p>
+            <p class="timeline-date">Jan 2014 - Jun 2017</p>
+            <p class="timeline-desc">Designed the Bluemix service console and a platform-wide navigation pattern. Created a methodology for capturing and sharing user journey maps across the organization.</p>
           </div>
         </div>
       </div>

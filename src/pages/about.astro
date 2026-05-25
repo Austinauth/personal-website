@@ -2,14 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import ContactSection from '../components/ContactSection.astro';
 import { Image } from 'astro:assets';
-import mePhoto from '../assets/me-2.jpg';
+import mePhoto from '../assets/selfie-v2.png';
 ---
 
 <Layout title="About - Austin Auth">
   <section class="about">
     <h1>About</h1>
     <div class="content">
-      <Image src={mePhoto} alt="Austin Auth" class="about-photo" width={400} format="webp" quality={80} loading="eager" />
+      <Image src={mePhoto} alt="Austin Auth" class="about-photo" width={800} quality={90} loading="eager" />
       <p>
         Hey, thanks for taking a moment to stop by.
       </p>
